@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Accordion from '@mui/material/Accordion';
 import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -10,32 +10,36 @@ import { Link } from 'react-router-dom';
 import {useJobs}from '../utils/fetchjobs'
 import { useSelector } from 'react-redux';
 const Joblistingdata = ()=> {
+  const [filterseclection,setFilterselection] = useState("")
     const searchTerm = useSelector((state)=>state.search.searchTerm);
     console.log(searchTerm);
     const{jobs} = useJobs(searchTerm);
     // console.log(jobs);
+    const handleFilterSelection = (e)=>{
+            const value= e.target.value
+            setFilterselection(value)
+            console.log(filterseclection);
+            
+    }
   return (
     <div className="flex gap-6 p-6">
-      {/* Left Filtering Panel */}
       <aside className="w-2/5  p-6 min-h-full rounded-xl shadow-md">
         <h2 className="text-xl font-semibold mb-4 text-light-800">Filter Jobs</h2>
         <div className="space-y-3">
           <label className="flex items-center gap-2">
-            <input type="checkbox" className="accent-purple-600" /> Remote
+            <input type="checkbox" className="accent-purple-600" value={filterseclection} onChange={handleFilterSelection} /> Remote
           </label>
           <label className="flex items-center gap-2">
-            <input type="checkbox" className="accent-purple-600" /> Onsite
+            <input type="checkbox" className="accent-purple-600"  value={filterseclection} onChange={handleFilterSelection} /> Onsite
           </label>
           <label className="flex items-center gap-2">
-            <input type="checkbox" className="accent-purple-600" /> Full-time
+            <input type="checkbox" className="accent-purple-600"   value={filterseclection}onChange={handleFilterSelection} /> Full-time
           </label>
           <label className="flex items-center gap-2">
-            <input type="checkbox" className="accent-purple-600" /> Part-time
+            <input type="checkbox" className="accent-purple-600"  value={filterseclection} onChange={handleFilterSelection} /> Part-time
           </label>
         </div>
       </aside>
-
-      {/* Right Job Listings */}
       <main className="w-3/5 space-y-4">
         {jobs.length > 0 &&
           jobs.slice(0, 10).map((job) => (

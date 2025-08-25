@@ -19,7 +19,7 @@ const router = createBrowserRouter([{
     path:"/jobsearch",
     element:<JobSearch/>
   },{
-    path:"/job/:slug",
+    path:"/jobsearch/:slug",
     element:<Jobdetail/>
   }]
 }])

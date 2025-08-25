@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import {useJobs} from '../utils/fetchjobs'
 import {useDispatch,useSelector} from 'react-redux'
 import { fetchSearchTerm } from '../store/searchSlice'
+import SearchIcon from '@mui/icons-material/Search';
 const Search = () => {
     const dispatch = useDispatch();
     
@@ -25,6 +26,7 @@ const Search = () => {
                focus:outline-none focus:ring-2 focus:ring-blue-500 
                shadow-md"
        />
+   <SearchIcon className="" />
     </div>
   )
 }
