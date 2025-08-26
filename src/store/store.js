@@ -1,10 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit'
 import search from './searchSlice.js'
-// import filter from "./filterSlice.js"
+import savejobs from './savejobsSlice.jsx'
 const store = configureStore({
     reducer:{
         search:search,
-        // filter:filter
+        savejobs:savejobs
     }
 })
 

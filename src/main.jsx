@@ -7,6 +7,7 @@ import Jobdetail from './components/Jobdetails.jsx'
 import Home from './pages/Home.jsx'
 import JobSearch from './pages/Jobsearch.jsx'
 import {Provider} from 'react-redux'
+import Savedjobs from './components/Savedjobs.jsx'
 import store from './store/store.js'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 const router = createBrowserRouter([{
@@ -21,6 +22,9 @@ const router = createBrowserRouter([{
   },{
     path:"/jobsearch/:slug",
     element:<Jobdetail/>
+  },{
+    path:"/savedjobs",
+    element:<Savedjobs/> 
   }]
 }])
 createRoot(document.getElementById('root')).render(

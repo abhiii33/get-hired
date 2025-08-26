@@ -7,10 +7,13 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import { saveJob } from '../store/savejobsSlice';
+import { useDispatch } from 'react-redux';
 import {useJobs}from '../utils/fetchjobs'
 import { useSelector } from 'react-redux';
 const Joblistingdata = ()=> {
   const [filterseclection,setFilterselection] = useState("")
+  const dispatch = useDispatch();
     const searchTerm = useSelector((state)=>state.search.searchTerm);
     console.log(searchTerm);
     const{jobs} = useJobs(searchTerm);
@@ -79,6 +82,13 @@ const Joblistingdata = ()=> {
                       Read full job description
                     </Button>
                   </Link>
+                  <Button
+                      variant="contained"
+                      className="!bg-purple-600 !rounded-lg hover:!bg-purple-700"
+                      onClick={()=>{dispatch(saveJob(job))}}
+                    >
+                    Save
+                    </Button>
                 </div>
               </AccordionDetails>
             </Accordion>
