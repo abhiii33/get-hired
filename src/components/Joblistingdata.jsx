@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { saveJob } from '../store/savejobsSlice';
 import { useDispatch } from 'react-redux';
 import {useJobs}from '../utils/fetchjobs'
+import { filterJobsData } from '../store/filterSlice';
 import { useSelector } from 'react-redux';
 const Joblistingdata = ()=> {
   const [filterseclection,setFilterselection] = useState("")
@@ -17,35 +18,40 @@ const Joblistingdata = ()=> {
     const searchTerm = useSelector((state)=>state.search.searchTerm);
     console.log(searchTerm);
     const{jobs} = useJobs(searchTerm);
+    localStorage.setItem("jobsData",JSON.stringify(jobs))
     // console.log(jobs);
     const handleFilterSelection = (e)=>{
-            const value= e.target.value
+            const value= e.target.name
+            console.log(value);
+            
             setFilterselection(value)
+            dispatch(filterJobsData(value))
             console.log(filterseclection);
             
     }
+    const filteredJobs = useSelector((state)=>state.filter.filter);
+    console.log("Filtered Jobs from Redux:", filteredJobs);
   return (
     <div className="flex gap-6 p-6">
       <aside className="w-2/5  p-6 min-h-full rounded-xl shadow-md">
         <h2 className="text-xl font-semibold mb-4 text-light-800">Filter Jobs</h2>
         <div className="space-y-3">
           <label className="flex items-center gap-2">
-            <input type="checkbox" className="accent-purple-600" value={filterseclection} onChange={handleFilterSelection} /> Remote
+            <input type="checkbox" className="accent-purple-600" name="Remote" onChange={handleFilterSelection} /> Remote
           </label>
           <label className="flex items-center gap-2">
-            <input type="checkbox" className="accent-purple-600"  value={filterseclection} onChange={handleFilterSelection} /> Onsite
+            <input type="checkbox" className="accent-purple-600" name="Onsite"   onChange={handleFilterSelection} /> Onsite
           </label>
           <label className="flex items-center gap-2">
-            <input type="checkbox" className="accent-purple-600"   value={filterseclection}onChange={handleFilterSelection} /> Full-time
+            <input type="checkbox" className="accent-purple-600"   onChange={handleFilterSelection} /> Full-time
           </label>
           <label className="flex items-center gap-2">
-            <input type="checkbox" className="accent-purple-600"  value={filterseclection} onChange={handleFilterSelection} /> Part-time
+            <input type="checkbox" className="accent-purple-600"   onChange={handleFilterSelection} /> Part-time
           </label>
         </div>
       </aside>
       <main className="w-3/5 space-y-4">
-        {jobs.length > 0 &&
-          jobs.slice(0, 10).map((job) => (
+        {(filteredJobs && filteredJobs.length > 0 ? filteredJobs : jobs).map((job) => (
             <Accordion
               key={job.slug}
               className="!bg-slate-700 !text-white rounded-xl p-5 !shadow-lg"

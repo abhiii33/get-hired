@@ -9,6 +9,8 @@ import JobSearch from './pages/Jobsearch.jsx'
 import {Provider} from 'react-redux'
 import Savedjobs from './components/Savedjobs.jsx'
 import store from './store/store.js'
+import LoginScreen from "./pages/LoginScreen.jsx"
+import Login2 from "./pages/Login2.jsx"
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 const router = createBrowserRouter([{
   path:"/",
@@ -25,6 +27,12 @@ const router = createBrowserRouter([{
   },{
     path:"/savedjobs",
     element:<Savedjobs/> 
+  },{
+    path:"/login",
+    element:<LoginScreen/>
+  },{
+    path:"/login2",
+    element:<Login2/>
   }]
 }])
 createRoot(document.getElementById('root')).render(

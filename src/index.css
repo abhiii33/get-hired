@@ -8,5 +8,126 @@
 }
 body{
   background-color: black;
+  /* background: linear-gradient(180deg, #5EA5CA 0%, #EEFFFC 100%); */
+
   color: #fff;
 }
+.login-screen {
+    /* background-image: url(src/assets/BACKGROUND.png); */
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+.login-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:  url(src/assets/BACKGROUND.png);
+  background-size: cover;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+/* .left-box::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  background-image: url(src/assets/Vector.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+.login-box::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background-image: url(src/assets/Vector4.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+} */
+/* style={{ background: 'linear-gradient(180deg, #5EA5CA 0%, #EEFFFC 100%)' }} */
+.cloud{
+  padding: 2rem;
+}
+.left-box, .right-box{
+  /* width: 450px;
+  height: 250px; */
+}
+.right-box{
+  /* margin-right: 5.5rem; */
+}
+.cloud1{
+  width: 320px;
+  animation: float 6s ease-in-out infinite;
+}
+.cloud2{
+  width: 250px;
+  animation: float 8s ease-in-out infinite;
+} 
+
+        /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .cloud-animate {
+          animation: float 6s ease-in-out infinite;
+        }
+        
+        .cloud-animate-delayed {
+          animation: float 8s ease-in-out infinite;
+          animation-delay: 1s;
+        }
+        
+        .form-animate {
+          animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .login-bg {
+          background: linear-gradient(180deg, #5EA5CA 0%, #EEFFFC 100%);
+        }
+        
+        .login-bg::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: url('src/assets/BACKGROUND.png');
+          background-size: cover;
+          background-position: center bottom;
+          background-repeat: no-repeat;
+          z-index: 1;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .login-bg::before {
+            background-position: center bottom;
+            background-size: cover;
+          }
+        }
+  
